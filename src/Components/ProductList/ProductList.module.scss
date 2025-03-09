@@ -1,0 +1,21 @@
+.root {
+	gap: 20px;
+	margin: 0 auto;
+	.shopContainer {
+		margin-top: 90px;
+	}
+
+	.shopFoto {
+		width: 100%;
+		height: 450px;
+		background-image: url('../../assets/ProgectFoto/shop.jpg');
+		background-size: cover;
+		background-position: center;
+	}
+	.productContainer {
+		margin-top: 50px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+}

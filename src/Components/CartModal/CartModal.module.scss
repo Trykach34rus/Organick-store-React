@@ -1,0 +1,147 @@
+.root {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.403);
+	backdrop-filter: blur(5px);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease 0s;
+	&.modalActive {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.modalContainer {
+		width: 800px;
+		background-color: white;
+		padding: 20px;
+		border-radius: 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.modalTop {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.modalTitle {
+		font-size: 25px;
+		font-weight: 700;
+	}
+
+	.modalClose {
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		background-color: #274c5b;
+		color: white;
+		cursor: pointer;
+	}
+
+	.modalBody {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		height: 500px;
+		overflow-y: scroll;
+	}
+
+	.modalItem {
+		border: 1px solid #274c5b;
+		padding: 15px;
+		border-radius: 15px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.modalLeft {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+	}
+
+	.modalImg {
+		width: 50px;
+		height: 50px;
+		border-radius: 10px;
+		object-fit: cover;
+	}
+
+	.modalName {
+		font-size: 18px;
+		font-weight: 600;
+	}
+
+	.modalRight {
+		display: flex;
+		gap: 5px;
+		align-items: center;
+	}
+
+	.modalMinus,
+	.modalPlus,
+	.modalDelete {
+		height: 40px;
+		width: 40px;
+		border-radius: 20px;
+		background-color: #274c5b;
+		color: white;
+		cursor: pointer;
+		border: none;
+		transition: background-color 0.3s ease;
+	}
+
+	.modalMinus:hover,
+	.modalPlus:hover,
+	.modalDelete:hover {
+		background-color: #1a3640;
+	}
+
+	.modalItemCount {
+		font-weight: 700;
+	}
+
+	.modalItemPrice {
+		font-weight: 700;
+	}
+
+	.modalFooter {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.modalFooterTitle {
+		font-size: 25px;
+		font-weight: 700;
+	}
+
+	.modalPrice {
+		font-weight: 700;
+	}
+
+	.modalBtn {
+		padding: 10px 35px;
+		border-radius: 15px;
+		background-color: #efd372;
+		color: white;
+		font-size: 20px;
+		cursor: pointer;
+		border: none;
+		transition: background-color 0.3s ease;
+	}
+
+	.modalBtn:hover {
+		background-color: #d4b85a;
+	}
+}
