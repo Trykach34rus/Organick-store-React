@@ -1,7 +1,14 @@
 import Cart from '../../assets/ProgectFoto/Cart.svg'
+import { handleSearch } from '../../redux/slices/filterReducer'
+import { setIsCartOpen } from '../../redux/slices/productsReducer'
+import { useAppDispatch, useAppSelector } from '../../redux/store'
 import st from './Header.module.scss'
 
-function Header({ onCartClick, cartItems, onSearch, searchValue }) {
+function Header() {
+	const { searchValue } = useAppSelector(state => state.filter)
+	const { cartItems } = useAppSelector(state => state.products)
+	const dispatch = useAppDispatch()
+
 	return (
 		<header className={st.root}>
 			<div className={st.headerTop}>
@@ -20,9 +27,12 @@ function Header({ onCartClick, cartItems, onSearch, searchValue }) {
 						type='text'
 						placeholder='Search...'
 						value={searchValue}
-						onChange={e => onSearch(e.target.value)}
+						onChange={e => dispatch(handleSearch(e.target.value))}
 					/>
-					<div className={st.cartBtnContainer} onClick={onCartClick}>
+					<div
+						className={st.cartBtnContainer}
+						onClick={() => dispatch(setIsCartOpen(true))}
+					>
 						<button className={st.cartBtn}>
 							<img src={Cart} />
 						</button>

@@ -13,9 +13,17 @@
 		background-position: center;
 	}
 	.productContainer {
+		margin: 0 auto;
 		margin-top: 50px;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 20px;
+	}
+	.error {
+		text-align: center;
+		color: red;
+		font-size: 30px;
+		margin: 50px 0;
 	}
 }

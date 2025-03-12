@@ -1,26 +1,32 @@
+import {
+	handleDecrease,
+	handleIncrease,
+	handleRemove,
+	setIsCartOpen,
+} from '../../redux/slices/productsReducer'
+import { useAppDispatch, useAppSelector } from '../../redux/store'
 import st from './CartModal.module.scss'
 
-function CartModal({
-	isOpen,
-	onClose,
-	cartItems,
-	onIncrease,
-	onDecrease,
-	onRemove,
-}) {
+function CartModal() {
+	const { cartItems, isCartOpen } = useAppSelector(state => state.products)
+	const dispatch = useAppDispatch()
+
 	const totalPrice = cartItems.reduce(
 		(acc, item) => acc + item.price * item.quantity,
 		0
 	)
 
 	return (
-		<div className={`${st.root} ${isOpen ? st.modalActive : ''}`}>
+		<div className={`${st.root} ${isCartOpen ? st.modalActive : ''}`}>
 			<div className={st.modalContainer}>
 				<div className={st.modalTop}>
 					<h2 className={st.modalTitle}>
 						Products: <span className={st.modalCount}>{cartItems.length}</span>
 					</h2>
-					<button className={st.modalClose} onClick={onClose}>
+					<button
+						className={st.modalClose}
+						onClick={() => dispatch(setIsCartOpen(false))}
+					>
 						X
 					</button>
 				</div>
@@ -38,21 +44,21 @@ function CartModal({
 							<div className={st.modalRight}>
 								<button
 									className={st.modalMinus}
-									onClick={() => onDecrease(item.id)}
+									onClick={() => dispatch(handleDecrease(item.id))}
 								>
 									-
 								</button>
 								<span className={st.modalItemCount}>{item.quantity}</span>
 								<button
 									className={st.modalPlus}
-									onClick={() => onIncrease(item.id)}
+									onClick={() => dispatch(handleIncrease(item.id))}
 								>
 									+
 								</button>
 								<p className={st.modalItemPrice}>${item.price.toFixed(2)}</p>
 								<button
 									className={st.modalDelete}
-									onClick={() => onRemove(item.id)}
+									onClick={() => dispatch(handleRemove(item.id))}
 								>
 									X
 								</button>
